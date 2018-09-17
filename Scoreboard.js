@@ -1,3 +1,4 @@
+import React from 'react';
 
 const INITIAL_STATE = {
   players: [
@@ -16,7 +17,7 @@ const INITIAL_STATE = {
   ],
 }
 
-const Application = React.createClass({
+const Scoreboard = React.createClass({
   getInitialState: function () {
     return INITIAL_STATE;
   },
@@ -250,3 +251,4 @@ const AddPlayerForm = React.createClass({
   }
 });
 
+export default Scoreboard;
