@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Stopwatch from '../components/Stopwatch.js';
-import Counter from '../components/Counter';
-import Stats from '../components/Stats';
+import AddPlayerForm from '../components/AddPlayerForm';
+import Header from '../components/Header';
+import Player from '../components/Player';
 
 const INITIAL_STATE = {
   players: [
@@ -58,80 +58,6 @@ const Scoreboard = React.createClass({
            }.bind(this))}
         </div>
         <AddPlayerForm onAdd={this.onAddPlayer} />
-      </div>
-    );
-  }
-});
-
-
-function Header(props) {
-  return (
-    <div className="header">
-      <Stats players={props.players} />
-      <h1>Scoreboard</h1>
-      <Stopwatch />
-    </div>
-  );
-}
-
-Header.propTypes = {
-  players: React.PropTypes.array.isRequired,
-};
-
-function Player(props) {
-  return (
-    <div className="player">
-      <div className="player-name">
-        <a className="remove-player" onClick={props.onRemove}>✖</a>
-        {props.name}
-      </div>
-      <div className="player-score">
-        <Counter onChange={props.onScoreChange} score={props.score} />
-      </div>
-    </div>
-  );
-}
-
-Player.propTypes = {
-  name: React.PropTypes.string.isRequired,
-  score: React.PropTypes.number.isRequired,
-  onRemove: React.PropTypes.func.isRequired,
-  onScoreChange: React.PropTypes.func.isRequired,
-};
-
-// ----------------------------------------------------------
-const AddPlayerForm = React.createClass({
-  propTypes: {
-    onAdd: React.PropTypes.func.isRequired,
-  },
-
-  getInitialState: function () {
-    return { name: '' };
-  },
-
-  onNameChange: function (e) {
-    const name = e.target.value;
-    this.setState({ name: name });
-  },
-
-  onSubmit: function (e) {
-    if (e) e.preventDefault();
-    this.props.onAdd(this.state.name);
-    this.setState({ name: '' });
-  },
-
-  render: function () {
-    return (
-      <div className="add-player-form">
-        <form onSubmit={this.onSubmit}>
-          <input
-            type="text"
-            value={this.state.name}
-            onChange={this.onNameChange}
-            placeholder="Player Name"
-          />
-          <input type="submit" value="Add Player" />
-        </form>
       </div>
     );
   }
