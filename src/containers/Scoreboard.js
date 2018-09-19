@@ -29,8 +29,7 @@ class Scoreboard extends Component{
   getNextKey = () => {
     let highestKey = this.state.currentKey;
     this.state.players.forEach(player => {
-      if ((player.key > highestKey) 
-      && (player.key > this.state.currentKey)) { 
+      if (player.key > this.state.currentKey) { 
         highestKey = player.key;
       }
     });
@@ -44,7 +43,12 @@ class Scoreboard extends Component{
   };
 
   onAddPlayer = name => {
-    this.state.players.push({ name: name, score: 0, key: this.getNextKey() });
+    this.state.players.push(
+      { 
+        name: name, 
+        score: 0, 
+        key: this.getNextKey() 
+      });
     this.setState(this.state);
   };
 
