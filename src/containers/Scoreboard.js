@@ -6,7 +6,7 @@ import Player from '../components/Player';
 
 class Scoreboard extends Component{
   state = {
-    currentKey: 3,
+    currentKey: 0,
     players: [
       {
         key: 0,
@@ -26,7 +26,17 @@ class Scoreboard extends Component{
     ],
   };
 
-  getNextKey = () => this.setState({currentKey: ++this.currentKey});
+  getNextKey = () => {
+    let highestKey = this.state.currentKey;
+    this.state.players.forEach(player => {
+      if ((player.key > highestKey) 
+      && (player.key > this.state.currentKey)) { 
+        highestKey = player.key;
+      }
+    });
+    this.setState({currentKey: ++highestKey});
+    return highestKey;
+  }
 
   onScoreChange = (index, delta) => {
     this.state.players[index].score += delta;
@@ -34,7 +44,7 @@ class Scoreboard extends Component{
   };
 
   onAddPlayer = name => {
-    this.state.players.push({ name: name, score: 0 });
+    this.state.players.push({ name: name, score: 0, key: this.getNextKey() });
     this.setState(this.state);
   };
 
