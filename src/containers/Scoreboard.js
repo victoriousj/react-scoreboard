@@ -15,10 +15,10 @@ class Scoreboard extends Component{
 
   render() {
 
-    const {dispath, players } = this.props;
-    const addPlayer = bindActionCreators(PlayerActionCreators.addPlayer, dispath);
-    const removePlayer = bindActionCreators(PlayerActionCreators.removePlayer, dispath);;
-    const updatePlayerScore = bindActionCreators(PlayerActionCreators.updatePlayerScore, dispath);;
+    const {dispatch, players } = this.props;
+    const addPlayer = bindActionCreators(PlayerActionCreators.addPlayer, dispatch);
+    const removePlayer = bindActionCreators(PlayerActionCreators.removePlayer, dispatch);;
+    const updatePlayerScore = bindActionCreators(PlayerActionCreators.updatePlayerScore, dispatch);;
 
     const playerComponents = players.map((player, index) => (
       <Player
@@ -43,7 +43,7 @@ class Scoreboard extends Component{
   }
 };
 
-mapStateToProps = state => (
+const mapStateToProps = state => (
   {
     players: state
   }
