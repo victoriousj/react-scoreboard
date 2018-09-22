@@ -17,7 +17,7 @@ const PlayerDetail = ({selectedPlayer}) => {
           </li>
           <li>
             <span>Updated: </span> 
-            {selectedPlayer.created}
+            {selectedPlayer.updated}
           </li>        
         </ul>
       </div>
