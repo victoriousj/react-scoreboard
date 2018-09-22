@@ -1,5 +1,4 @@
 import React, { PropTypes } from 'react';
-import Player from '../reducers/player';
 
 const PlayerDetail = ({selectedPlayer}) => {
   if(selectedPlayer){
@@ -27,6 +26,5 @@ const PlayerDetail = ({selectedPlayer}) => {
     return (<p>Click on a player to see more details</p>);
   }
 };
-
 
 export default PlayerDetail;

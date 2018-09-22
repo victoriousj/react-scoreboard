@@ -1,11 +1,12 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as PlayerActionCreators from '../actions/player';
-import Header from '../components/Header';
+
 import Player from '../components/Player';
-import AddPlayerForm from '../components/AddPlayerForm';
+import Header from '../components/Header';
 import PlayerDetail from '../components/PlayerDetail';
+import AddPlayerForm from '../components/AddPlayerForm';
+import * as PlayerActionCreators from '../actions/player';
 
 class Scoreboard extends Component {
   static propTypes = {
@@ -19,20 +20,20 @@ class Scoreboard extends Component {
     const updatePlayerScore = bindActionCreators(PlayerActionCreators.updatePlayerScore, dispatch);
     const selectPlayer = bindActionCreators(PlayerActionCreators.selectPlayer, dispatch);
 
-    let selectedPlayer;
-    if(selectedPlayerIndex !== -1){
-      selectedPlayer = players[selectedPlayerIndex];
-    }
+    let selectedPlayer = selectedPlayerIndex !== -1
+      ? selectedPlayer = players[selectedPlayerIndex]
+      : null;
+    
 
     const playerComponents = players.map((player, index) => (
       <Player
         index={index}
+        key={player.name}
         name={player.name}
         score={player.score}
-        key={player.name}
-        updatePlayerScore={updatePlayerScore}
         removePlayer={removePlayer}
         selectPlayer={selectPlayer}
+        updatePlayerScore={updatePlayerScore}
       />
     ));
     return (

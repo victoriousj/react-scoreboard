@@ -16,9 +16,9 @@ const Counter = props => (
   </div>);
 
   Counter.propTypes = {
-      updatePlayerScore: PropTypes.func.isRequired,
-      index: PropTypes.number.isRequired,
-      score: PropTypes.number.isRequired
+    score: PropTypes.number.isRequired,
+    index: PropTypes.number.isRequired,
+    updatePlayerScore: PropTypes.func.isRequired
   };
 
 export default Counter;

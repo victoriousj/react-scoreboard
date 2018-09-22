@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+
 import Stats from './Stats';
 import Stopwatch from './Stopwatch';
 

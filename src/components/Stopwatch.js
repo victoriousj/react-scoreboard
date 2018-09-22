@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 
 export default class Stopwatch extends Component {
   state = {
@@ -51,10 +51,9 @@ export default class Stopwatch extends Component {
       <div className="stopwatch" >
         <h2>Stopwatch</h2>
         <div className="stopwatch-time"> {seconds} </div>
-        { this.state.running ?
-          <button onClick={this.onStop}>Stop</button>
-          :
-          <button onClick={this.onStart}>Start</button>
+        { this.state.running 
+          ? <button onClick={this.onStop}>Stop</button>
+          :<button onClick={this.onStart}>Start</button>
         }
         <button onClick={this.onReset}>Reset</button>
       </div>
