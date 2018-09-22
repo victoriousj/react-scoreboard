@@ -1,9 +1,12 @@
 import React, { PropTypes } from 'react';
+
 import Counter from './Counter';
 
 const Player = props => (
-  <div className="player" onClick={() => props.selectPlayer(props.index)}>
-    <div className="player-name">
+  <div className="player">
+    <div 
+      className="player-name"
+      onClick={() => props.selectPlayer(props.index)}>
       <a className="remove-player"
         onClick={() => props.removePlayer(props.index)}>
         ✖

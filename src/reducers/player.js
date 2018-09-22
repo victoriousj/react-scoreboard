@@ -24,18 +24,13 @@ const initialState = {
 }
 
 export default function Player(state=initialState, action) {	
-
-	let date = new Date();
-	let day = date.getDate();
-	let month = date.getMonth()+1;
-	let year = date.getFullYear();
 	
   switch(action.type){
     case PlayerActionTypes.ADD_PLAYER: {
 			const addPlayerList = [...state.players,   {
           name: action.name,
           score: 0,
-          created: `${month}/${day}/${year}`
+          created: new Date().toLocaleDateString()
       }];
       return {
         ...state,
@@ -60,7 +55,7 @@ export default function Player(state=initialState, action) {
           return {
             ...player,
              score: player.score + action.score,
-             updated: `${month}/${day}/${year}`
+             updated: new Date().toLocaleDateString()
            };
         }
         return player;
@@ -71,10 +66,12 @@ export default function Player(state=initialState, action) {
 			};
 		}
 
-	  case PlayerActionTypes.SELECT_PLAYER:
+		case PlayerActionTypes.SELECT_PLAYER:
+			let index = action.index;
+			if (state.selectedPlayerIndex === index) index = -1;
 		  return {
 				...state,
-				selectedPlayerIndex: action.index
+				selectedPlayerIndex: index
 			};
 
     default:
