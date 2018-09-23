@@ -17,18 +17,18 @@ class Scoreboard extends Component {
     const { dispatch, players, selectedPlayerIndex } = this.props;
     const addPlayer = bindActionCreators(PlayerActionCreators.addPlayer, dispatch);
     const removePlayer = bindActionCreators(PlayerActionCreators.removePlayer, dispatch);
-    const updatePlayerScore = bindActionCreators(PlayerActionCreators.updatePlayerScore, dispatch);
     const selectPlayer = bindActionCreators(PlayerActionCreators.selectPlayer, dispatch);
+    const updatePlayerScore = bindActionCreators(PlayerActionCreators.updatePlayerScore, dispatch);
 
     let selectedPlayer = selectedPlayerIndex !== -1
       ? selectedPlayer = players[selectedPlayerIndex]
-      : null;
+      : undefined;
     
 
     const playerComponents = players.map((player, index) => (
       <Player
         index={index}
-        key={player.name}
+        key={player.key}
         name={player.name}
         score={player.score}
         removePlayer={removePlayer}
