@@ -2,6 +2,7 @@ import * as PlayerActionTypes from '../actiontypes/player';
 
 const initialState = {
 	players: [{
+		id: 0,
 		key: 0,
 		name: 'Jim Hoskins',
 	  score: 31,
@@ -9,6 +10,7 @@ const initialState = {
 		updated: '11/9/2016'
 	},
 	{
+		id: 1,
 		key: 1,
 		name: 'Andrew Chalkley',
 		score: 20,
@@ -16,6 +18,7 @@ const initialState = {
 		updated: '11/10/2016'
 	},
 	{
+		id: 2,
 		key: 2,
 		name: 'Alena Holligan',
 		score: 50,
@@ -24,7 +27,7 @@ const initialState = {
 	}
 	],
 	currentKey: 3,
-	selectedPlayerIndex: -1,
+	selectedPlayerId: -1,
 	getNextKey: function() {return this.currentKey++},
 }
 
@@ -33,6 +36,7 @@ export default function Player(state=initialState, action) {
   switch(action.type){
     case PlayerActionTypes.ADD_PLAYER: {
 			const addPlayerList = [...state.players,   {
+					id: state.currentKey,
 					key: state.getNextKey(),
           name: action.name,
           score: 0,
@@ -45,10 +49,8 @@ export default function Player(state=initialState, action) {
 	 	}
 
     case PlayerActionTypes.REMOVE_PLAYER: {
-			const removePlayerList = [
-				...state.players.slice(0, action.index),
-				...state.players.slice(action.index + 1)
-			];
+			const removePlayerList = state.players.filter(player =>
+				player.id !== action.id);
       return {
 				...state,
 				players: removePlayerList
@@ -56,8 +58,8 @@ export default function Player(state=initialState, action) {
 		}
 
     case PlayerActionTypes.UPDATE_PLAYER_SCORE: {
-			const updatePlayerList = state.players.map((player, index) => {
-        if(index === action.index){
+			const updatePlayerList = state.players.map((player) => {
+        if(player.id === action.id){
           return {
             ...player,
              score: player.score + action.score,
@@ -73,11 +75,11 @@ export default function Player(state=initialState, action) {
 		}
 
 		case PlayerActionTypes.SELECT_PLAYER:
-			let index = action.index;
-			if (state.selectedPlayerIndex === index) index = -1;
+			let id = action.id;
+			if (state.selectedPlayerId === id) id = -1;
 		  return {
 				...state,
-				selectedPlayerIndex: index
+				selectedPlayerId: id
 			};
 
     default:

@@ -14,20 +14,20 @@ class Scoreboard extends Component {
   };
 
   render() {
-    const { dispatch, players, selectedPlayerIndex } = this.props;
+    const { dispatch, players, selectedPlayerId } = this.props;
     const addPlayer = bindActionCreators(PlayerActionCreators.addPlayer, dispatch);
     const removePlayer = bindActionCreators(PlayerActionCreators.removePlayer, dispatch);
     const selectPlayer = bindActionCreators(PlayerActionCreators.selectPlayer, dispatch);
     const updatePlayerScore = bindActionCreators(PlayerActionCreators.updatePlayerScore, dispatch);
 
-    let selectedPlayer = selectedPlayerIndex !== -1
-      ? selectedPlayer = players[selectedPlayerIndex]
+    let selectedPlayer = selectedPlayerId !== -1
+      ? selectedPlayer = players[selectedPlayerId]
       : undefined;
     
 
-    const playerComponents = players.map((player, index) => (
+    const playerComponents = players.map((player) => (
       <Player
-        index={index}
+        id={player.key}
         key={player.key}
         name={player.name}
         score={player.score}
@@ -54,7 +54,7 @@ class Scoreboard extends Component {
 const mapStateToProps = state => (
   {
     players: state.players,
-    selectedPlayerIndex: state.selectedPlayerIndex
+    selectedPlayerId: state.selectedPlayerId
   }
 );
 
