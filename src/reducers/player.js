@@ -62,8 +62,10 @@ export default function Player(state=initialState, action) {
 		}
 
     case PlayerActionTypes.UPDATE_PLAYER_SCORE: {
+			let updatedPlayerId;
 			const updatePlayerList = state.players.map(player => {
         if (player.id === action.id){
+					updatedPlayerId = player.id;
           return {
             ...player,
              score: player.score + action.score,
@@ -75,12 +77,13 @@ export default function Player(state=initialState, action) {
 			
 			return {
 				...state,
-				players: updatePlayerList
+				players: updatePlayerList,
+				selectedPlayerId: updatedPlayerId,
 			};
 		}
 
 		case PlayerActionTypes.SELECT_PLAYER:
-			let id = state.selectedPlayerId === id ? action.id : action.id--;
+			let id = state.selectedPlayerId === action.id ? -1 : action.id;
 		  return {
 				...state,
 				selectedPlayerId: id
