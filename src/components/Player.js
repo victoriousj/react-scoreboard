@@ -18,7 +18,7 @@ const Player = props => (
         </div>
         <div className="player-score">
           <Counter
-            score={5}
+            score={props.score}
             playerId={props.id}
             updatePlayerScore={props.updatePlayerScore}
           />

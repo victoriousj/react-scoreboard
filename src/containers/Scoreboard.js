@@ -33,9 +33,9 @@ class Scoreboard extends Component {
 
     return (
 
-      // <Provider value={{
-      //   players: players,
-      // }}>
+      <Provider value={{
+        players: players,
+      }}>
         <div className="scoreboard">
           <Header players={players} />
           <div className="players">
@@ -46,7 +46,7 @@ class Scoreboard extends Component {
             <PlayerDetail selectedPlayer={selectedPlayer} />
           </div>
         </div>
-      // </Provider>
+      </Provider>
     );
   }
 }
