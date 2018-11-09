@@ -4,7 +4,7 @@ export default class Stopwatch extends React.Component {
   state = {
     running: false,
     previouseTime: 0,
-    elapsedTime: 0,
+    elapsedTime: 0
   };
 
   componentDidMount() {
@@ -18,20 +18,20 @@ export default class Stopwatch extends React.Component {
   onStart = () => {
     this.setState({
       running: true,
-      previousTime: Date.now(),
+      previousTime: Date.now()
     });
   };
 
   onStop = () => {
     this.setState({
-      running: false,
+      running: false
     });
   };
 
   onReset = () => {
     this.setState({
       elapsedTime: 0,
-      previousTime: Date.now(),
+      previousTime: Date.now()
     });
   };
 
@@ -41,21 +41,23 @@ export default class Stopwatch extends React.Component {
     let now = Date.now();
     this.setState({
       elapsedTime: this.state.elapsedTime + (now - this.state.previousTime),
-      previousTime: Date.now(),
+      previousTime: Date.now()
     });
   };
 
   render() {
     const seconds = Math.floor(this.state.elapsedTime / 1000);
-    const button =  this.state.running 
-    ? <button onClick={this.onStop}>Stop</button>
-    : <button onClick={this.onStart}>Start</button>
+    const button = this.state.running ? (
+      <button onClick={this.onStop}>Stop</button>
+    ) : (
+      <button onClick={this.onStart}>Start</button>
+    );
 
     return (
-      <div className="stopwatch" >
+      <div className="stopwatch">
         <h2>Stopwatch</h2>
         <div className="stopwatch-time"> {seconds} </div>
-          { button}
+        {button}
         <button onClick={this.onReset}>Reset</button>
       </div>
     );

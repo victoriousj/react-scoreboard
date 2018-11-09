@@ -2,8 +2,11 @@ import React from 'react';
 
 const Stats = props => {
   const playerCount = props.players.length;
-  
-  const totalPoints = props.players.reduce((total, player) => total + player.score, 0);
+
+  const totalPoints = props.players.reduce(
+    (total, player) => total + player.score,
+    0
+  );
 
   return (
     <table className="stats">
@@ -19,7 +22,6 @@ const Stats = props => {
       </tbody>
     </table>
   );
-}
-
+};
 
 export default Stats;

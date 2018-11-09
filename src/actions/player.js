@@ -14,11 +14,11 @@ export const removePlayer = id => {
   };
 };
 
-export const updatePlayerScore = (id, score)  => {
-   return {
-     type: PlayerActionTypes.UPDATE_PLAYER_SCORE,
-     id,
-     score
+export const updatePlayerScore = (id, score) => {
+  return {
+    type: PlayerActionTypes.UPDATE_PLAYER_SCORE,
+    id,
+    score
   };
 };
 
@@ -27,4 +27,4 @@ export const selectPlayer = id => {
     type: PlayerActionTypes.SELECT_PLAYER,
     id
   };
-}
+};
