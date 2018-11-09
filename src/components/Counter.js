@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 const Counter = props => (
   <div className="counter" >
@@ -16,10 +16,5 @@ const Counter = props => (
   </div>
 );
 
-  Counter.propTypes = {
-    score: PropTypes.number.isRequired,
-    playerId: PropTypes.number.isRequired,
-    updatePlayerScore: PropTypes.func.isRequired
-  };
 
 export default Counter;

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 const PlayerDetail = (props) => {
   if(props.selectedPlayer){
@@ -26,14 +26,5 @@ const PlayerDetail = (props) => {
     return (<p>Click on a player to see more details</p>);
   }
 };
-
-PlayerDetail.PropTypes = {
-  selectedPlayer: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    score: PropTypes.number.isRequired,
-    created: PropTypes.instanceOf(Date),
-    updated: PropTypes.instanceOf(Date),
-  }).isRequired
-}
 
 export default PlayerDetail;

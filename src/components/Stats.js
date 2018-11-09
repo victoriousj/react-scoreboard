@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 const Stats = props => {
   const playerCount = props.players.length;
@@ -21,8 +21,5 @@ const Stats = props => {
   );
 }
 
-Stats.propTypes = {
-  players: PropTypes.array.isRequired
-};
 
 export default Stats;

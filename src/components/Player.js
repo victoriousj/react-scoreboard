@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 
 import { Consumer } from './Context';
 import Counter from './Counter';
@@ -18,7 +18,7 @@ const Player = props => (
         </div>
         <div className="player-score">
           <Counter
-            score={props.score}
+            score={5}
             playerId={props.id}
             updatePlayerScore={props.updatePlayerScore}
           />
@@ -27,14 +27,5 @@ const Player = props => (
     )}
   </Consumer>
 );
-
-Player.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  score: PropTypes.number.isRequired,
-  selectPlayer: PropTypes.func.isRequired,
-  removePlayer: PropTypes.func.isRequired,
-  updatePlayerScore: PropTypes.func.isRequired
-};
 
 export default Player;

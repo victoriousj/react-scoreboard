@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -10,9 +10,6 @@ import AddPlayerForm from '../components/AddPlayerForm';
 import * as PlayerActionCreators from '../actions/player';
 
 class Scoreboard extends Component {
-  static propTypes = {
-    players: PropTypes.array.isRequired
-  };
 
   render() {
     const { dispatch, players, selectedPlayerId } = this.props;
@@ -36,9 +33,9 @@ class Scoreboard extends Component {
 
     return (
 
-      <Provider value={{
-        players: players,
-      }}>
+      // <Provider value={{
+      //   players: players,
+      // }}>
         <div className="scoreboard">
           <Header players={players} />
           <div className="players">
@@ -49,7 +46,7 @@ class Scoreboard extends Component {
             <PlayerDetail selectedPlayer={selectedPlayer} />
           </div>
         </div>
-      </Provider>
+      // </Provider>
     );
   }
 }
