@@ -34,9 +34,6 @@ class Scoreboard extends Component {
         key={player.key}
         name={player.name}
         score={player.score}
-        removePlayer={removePlayer}
-        selectPlayer={selectPlayer}
-        updatePlayerScore={updatePlayerScore}
       />
     ));
     let selectedPlayer = players.find(player => player.id === selectedPlayerId);
@@ -44,13 +41,18 @@ class Scoreboard extends Component {
     return (
       <Provider
         value={{
-          players: players
+          players: players,
+          actions: {
+            selectPlayer,
+            removePlayer,
+            updatePlayerScore
+          }
         }}
       >
         <div className="scoreboard">
           <Header players={players} />
           <div className="players">{playerComponents}</div>
-          <AddPlayerForm addPlayer={addPlayer} />
+          <AddPlayerForm />
           <div className="player-detail">
             <PlayerDetail selectedPlayer={selectedPlayer} />
           </div>

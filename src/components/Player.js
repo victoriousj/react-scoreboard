@@ -5,17 +5,16 @@ import Counter from './Counter';
 
 const Player = props => (
   <Consumer>
-    {context => {
-      console.log(context);
+    {({ actions }) => {
       return (
         <div className="player">
           <div
             className="player-name"
-            onClick={() => props.selectPlayer(props.id)}
+            onClick={() => actions.selectPlayer(props.id)}
           >
             <a
               className="remove-player"
-              onClick={() => props.removePlayer(props.id)}
+              onClick={() => actions.removePlayer(props.id)}
             >
               ✖
             </a>
