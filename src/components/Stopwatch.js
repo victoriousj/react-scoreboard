@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class Stopwatch extends Component {
+export default class Stopwatch extends React.Component {
   state = {
     running: false,
     previouseTime: 0,
@@ -36,25 +36,26 @@ export default class Stopwatch extends Component {
   };
 
   onTick = () => {
-    if (this.state.running) {
-      var now = Date.now();
-      this.setState({
-        elapsedTime: this.state.elapsedTime + (now - this.state.previousTime),
-        previousTime: Date.now(),
-      });
-    }
+    if (!this.state.running) return;
+
+    let now = Date.now();
+    this.setState({
+      elapsedTime: this.state.elapsedTime + (now - this.state.previousTime),
+      previousTime: Date.now(),
+    });
   };
 
   render() {
     const seconds = Math.floor(this.state.elapsedTime / 1000);
+    const button =  this.state.running 
+    ? <button onClick={this.onStop}>Stop</button>
+    : <button onClick={this.onStart}>Start</button>
+
     return (
       <div className="stopwatch" >
         <h2>Stopwatch</h2>
         <div className="stopwatch-time"> {seconds} </div>
-        { this.state.running 
-          ? <button onClick={this.onStop}>Stop</button>
-          :<button onClick={this.onStart}>Start</button>
-        }
+          { button}
         <button onClick={this.onReset}>Reset</button>
       </div>
     );

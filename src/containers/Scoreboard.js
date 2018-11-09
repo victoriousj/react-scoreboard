@@ -20,11 +20,6 @@ class Scoreboard extends Component {
     const removePlayer = bindActionCreators(PlayerActionCreators.removePlayer, dispatch);
     const selectPlayer = bindActionCreators(PlayerActionCreators.selectPlayer, dispatch);
     const updatePlayerScore = bindActionCreators(PlayerActionCreators.updatePlayerScore, dispatch);
-
-    let selectedPlayer = players.find(player =>
-      player.id === selectedPlayerId);
-    
-
     const playerComponents = players.map((player) => (
       <Player
         id={player.key}
@@ -36,6 +31,9 @@ class Scoreboard extends Component {
         updatePlayerScore={updatePlayerScore}
       />
     ));
+    let selectedPlayer = players.find(player =>
+      player.id === selectedPlayerId);
+
     return (
 
       <Provider value={{
