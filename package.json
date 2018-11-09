@@ -16,8 +16,8 @@
   "author": "Beau Palmquist",
   "license": "MIT",
   "dependencies": {
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0"
   },

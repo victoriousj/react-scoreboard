@@ -13,7 +13,8 @@ const Counter = props => (
       onClick={() => props.updatePlayerScore(props.playerId, 1)}>
       +
     </button>
-  </div>);
+  </div>
+);
 
   Counter.propTypes = {
     score: PropTypes.number.isRequired,

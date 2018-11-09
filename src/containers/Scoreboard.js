@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import Player from '../components/Player';
 import Header from '../components/Header';
+import { Provider } from '../components/Context';
 import PlayerDetail from '../components/PlayerDetail';
 import AddPlayerForm from '../components/AddPlayerForm';
 import * as PlayerActionCreators from '../actions/player';
@@ -36,16 +37,21 @@ class Scoreboard extends Component {
       />
     ));
     return (
-      <div className="scoreboard">
-        <Header players={players} />
-        <div className="players">
-          { playerComponents }
+
+      <Provider value={{
+        players: players,
+      }}>
+        <div className="scoreboard">
+          <Header players={players} />
+          <div className="players">
+            { playerComponents }
+          </div>
+          <AddPlayerForm addPlayer={addPlayer} />
+          <div className="player-detail">
+            <PlayerDetail selectedPlayer={selectedPlayer} />
+          </div>
         </div>
-        <AddPlayerForm addPlayer={addPlayer} />
-        <div className="player-detail">
-          <PlayerDetail selectedPlayer={selectedPlayer} />
-        </div>
-      </div>
+      </Provider>
     );
   }
 }
