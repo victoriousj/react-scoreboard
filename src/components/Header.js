@@ -3,10 +3,10 @@ import React from 'react';
 import Stats from './Stats';
 import Stopwatch from './Stopwatch';
 
-const Header = props => {
+const Header = () => {
   return (
     <div className="header">
-      <Stats players={props.players} />
+      <Stats />
       <h1>Scoreboard</h1>
       <Stopwatch />
     </div>

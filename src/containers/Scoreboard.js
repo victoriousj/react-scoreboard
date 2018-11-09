@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import Player from '../components/Player';
 import Header from '../components/Header';
 import { Provider } from '../components/Context';
+import PlayerList from '../components/PlayerList';
 import PlayerDetail from '../components/PlayerDetail';
 import AddPlayerForm from '../components/AddPlayerForm';
 import * as PlayerActionCreators from '../actions/player';
@@ -28,34 +28,27 @@ class Scoreboard extends Component {
       PlayerActionCreators.updatePlayerScore,
       dispatch
     );
-    const playerComponents = players.map(player => (
-      <Player
-        id={player.key}
-        key={player.key}
-        name={player.name}
-        score={player.score}
-      />
-    ));
+
     let selectedPlayer = players.find(player => player.id === selectedPlayerId);
 
+    const provider = {
+      selectedPlayer,
+      players,
+      actions: {
+        updatePlayerScore,
+        selectPlayer,
+        removePlayer,
+        addPlayer
+      }
+    };
+
     return (
-      <Provider
-        value={{
-          players: players,
-          actions: {
-            selectPlayer,
-            removePlayer,
-            updatePlayerScore
-          }
-        }}
-      >
+      <Provider value={{ ...provider }}>
         <div className="scoreboard">
-          <Header players={players} />
-          <div className="players">{playerComponents}</div>
-          <AddPlayerForm />
-          <div className="player-detail">
-            <PlayerDetail selectedPlayer={selectedPlayer} />
-          </div>
+          <Header />
+          <PlayerList />
+          <AddPlayerForm addPlayer={addPlayer} />
+          <PlayerDetail />
         </div>
       </Provider>
     );
